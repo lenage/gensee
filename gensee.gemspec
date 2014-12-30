@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yuan He"]
   spec.email         = ["lendage@gmail.com"]
   spec.summary       = %q{A Gensee API Wrapper in Ruby}
-  spec.description   = %q{Using Gensee API easy}
+  spec.description   = %q{Using Gensee JSON API easily}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.1.0"
 end
