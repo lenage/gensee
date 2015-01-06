@@ -7,13 +7,15 @@ Gem::Specification.new do |spec|
   spec.name          = "gensee"
   spec.version       = Gensee::VERSION
   spec.authors       = ["Yuan He"]
-  spec.email         = ["lendage@gmail.com"]
+  spec.email         = ["yuan@liulishuo.com"]
   spec.summary       = %q{A Gensee API Wrapper in Ruby}
   spec.description   = %q{Using Gensee JSON API easily}
-  spec.homepage      = ""
+  spec.homepage      = "https://git.llsapp.com/yuan/gensee/tree/master"
   spec.license       = "MIT"
 
   spec.add_dependency "faraday", '~> 0.9.0'
+  spec.add_dependency "oj", '~> 2.11.1'
+  spec.add_dependency "activesupport"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -23,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.1.0"
+  spec.add_development_dependency "pry"
 end
