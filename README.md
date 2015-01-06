@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+client = Gensee.client('http://yoursubdomain.gensee.com', 'gensee@username', 'yourpassword')
+classroom = client.create_classroom('AWESOME CLASSROOM', Time.now, rand(100_000..200_000), rand(100_000..2000_000))
+puts classroom[:student_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
+puts classroom[:teacher_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
+puts classroom[:number] # 34154643
+puts classroom[:id] # mquQf2
+```
+
+## Testing
+
+    $ export GENSEE=some@email.com:aloooongpassword
+    $ rake
 
 ## Contributing
 
