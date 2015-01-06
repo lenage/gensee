@@ -39,6 +39,7 @@ module Gensee
       end
 
       ##-------------------- COURSEWARE --------------------##
+
       # List all classrooms courseware
       def courseware_list(room_id)
         get preform_path('training/courseware/list'), roomId: room_id
@@ -57,6 +58,17 @@ module Gensee
 
       def delete_courseware(id)
         get preform_path('training/courseware/deleted'), coursewareId: id
+      end
+
+      ##-------------------- TEACHER --------------------##
+
+      # Register a teacher
+      # @params login [String]: teacher login name(email/mobile) (length: 1~40)
+      #         password [String]: teacher login password (length: 6~15)
+      #         name [String]: teacher name, (length: 1-40)
+      def create_teacher(name, login, password)
+        params = { name: name, teacherLoginName: login, teacherPassword: password }
+        get preform_path('training/teacher/created'), params
       end
     end
   end
