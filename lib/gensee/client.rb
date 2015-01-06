@@ -3,7 +3,6 @@ require 'digest'
 require 'oj'
 require 'active_support/core_ext/string'
 require 'active_support/core_ext/hash'
-require 'gensee/extend'
 require 'gensee/client/training'
 
 module Gensee
@@ -31,7 +30,7 @@ module Gensee
         conn.params = default_options
         conn.headers = { content_type: 'application/json' }
         conn.request :url_encoded
-        conn.response :logger
+        # conn.response :logger
         conn.adapter Faraday.default_adapter
       end
     end
