@@ -7,12 +7,12 @@ describe Gensee do
   context '.client' do
 
     it 'should accept as uri without schema' do
-      @client = Gensee.client(uri_without_schema, 'hello', 'word')
+      @client = Gensee.client(uri: uri_without_schema, username: 'hello', password: 'world')
       expect(@client.app_client.build_url.to_s).to match %r{http://}
     end
 
     it 'create an Gensee::Client' do
-      expect(Gensee.client(uri, 'hello', 'word')).to be_kind_of Gensee::Client
+      expect(Gensee.client(uri: uri, username: 'hello', password: 'word')).to be_kind_of Gensee::Client
     end
   end
 end

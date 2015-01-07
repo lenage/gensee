@@ -4,6 +4,7 @@ require 'oj'
 require 'active_support/core_ext/string'
 require 'active_support/core_ext/hash'
 require 'gensee/client/training'
+require 'gensee/configurable'
 
 module Gensee
   # Client for Gensee API
@@ -15,10 +16,11 @@ module Gensee
   class Client
     include Gensee::Client::Training
 
-    def initialize(uri, username, password)
-      @uri = uri.start_with?('http://') ? uri : "http://#{uri}"
-      @username = username
-      @password = Digest::MD5.hexdigest(password)
+    def initialize(options = {})
+      opts = options.dup
+      @uri = opts[:uri].start_with?('http://') ? opts[:uri] : "http://#{opts[:uri]}"
+      @username = opts[:username]
+      @password = Digest::MD5.hexdigest(opts[:password])
     end
 
     def default_options

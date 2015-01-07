@@ -2,10 +2,13 @@ require 'gensee/version'
 require 'gensee/client'
 
 module Gensee
+
   class << self
+    include Gensee::Configurable
+
     # @return [Gensee::Client] Gensee API Wrapper client
-    def client(uri, username, password)
-      @client = Gensee::Client.new(uri, username, password)
+    def client(options)
+      @client = Gensee::Client.new(options)
       @client
     end
   end
