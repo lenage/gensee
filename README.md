@@ -21,7 +21,27 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-client = Gensee.client('http://yoursubdomain.gensee.com', 'gensee@username', 'yourpassword')
+# Provide authentication credentials
+Gensee.configure do |c|
+  c.endpoint = 'http://yoursubdomain.gensee.com'
+  c.login = 'loginname'
+  c.password = 'yourpassword'
+end
+
+# Create classroom
+classroom = Gensee.client.create_classroom('AWESOME CLASSROOM', Time.now, rand(100_000..200_000), rand(100_000..2000_000))
+puts classroom[:student_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
+puts classroom[:teacher_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
+puts classroom[:number] # 34154643
+puts classroom[:id] # mquQf2
+```
+
+or
+
+```ruby
+# Provide authentication credentials
+client = Gensee::Client.new(endpoint: 'http://yoursubdomain.gensee.com', login: 'gensee@username', password: 'yourpassword')
+# create classroom
 classroom = client.create_classroom('AWESOME CLASSROOM', Time.now, rand(100_000..200_000), rand(100_000..2000_000))
 puts classroom[:student_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
 puts classroom[:teacher_join_url] # http://youdomain.gensee.com/training/site/s/{classroom_number}
@@ -31,7 +51,7 @@ puts classroom[:id] # mquQf2
 
 ## Testing
 
-    $ export GENSEE=some@email.com:aloooongpassword
+    $export GENSEE_ENDPOINT='http://yoursubdomain.gensee.com' GENSEE_LOGIN=loginname GENSEE_PASSWORD=somelooogpassword
     $ rake
 
 ## Contributing
