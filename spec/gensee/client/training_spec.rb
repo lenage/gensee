@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Gensee::Client::Training do
-  let(:auth) { ENV['GENSEE'].split(':') }
-  let(:client) { Gensee.client(uri: 'http://liulishuo.gensee.com', username: auth.first, password: auth.last) }
-  let(:classroom) { client.create_classroom("[TEST] a funny topic #{rand(100)}", Time.now, rand(100_000..200_000).to_s, rand(100_000..200_000).to_s) }
+  ## NOTICE: Below tests need a read Gensee account,
+  ## please set then var ENV, for example:
+  ## export GENSEE_ENDPOINT='http://yoursubdomain.gensee.com' GENSEE_LOGIN='loginname' GENSEE_PASSWORD='somelooogpassword'
 
+  let(:client) { Gensee.client }
+  let(:classroom) { client.create_classroom("[TEST] a funny topic #{rand(100)}", Time.now, rand(100_000..200_000).to_s, rand(100_000..200_000).to_s) }
   context 'classroom' do
     after(:each) do
       expect(client.delete_classroom(classroom[:id])[:code]).to eq '0'

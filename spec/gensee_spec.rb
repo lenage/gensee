@@ -6,13 +6,21 @@ describe Gensee do
 
   context '.client' do
 
+    before(:all) do
+      Gensee.configure do |c|
+        c.endpoint = 'http://example.gensee.com'
+        c.login = 'hello'
+        c.password = 'hello'
+      end
+    end
+
     it 'should accept as uri without schema' do
-      @client = Gensee.client(uri: uri_without_schema, username: 'hello', password: 'world')
+      @client = Gensee.client
       expect(@client.app_client.build_url.to_s).to match %r{http://}
     end
 
     it 'create an Gensee::Client' do
-      expect(Gensee.client(uri: uri, username: 'hello', password: 'word')).to be_kind_of Gensee::Client
+      expect(Gensee.client).to be_kind_of Gensee::Client
     end
   end
 end

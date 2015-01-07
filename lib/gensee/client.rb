@@ -18,8 +18,8 @@ module Gensee
 
     def initialize(options = {})
       opts = options.dup
-      @uri = opts[:uri].start_with?('http://') ? opts[:uri] : "http://#{opts[:uri]}"
-      @username = opts[:username]
+      @endpoint = opts[:endpoint].start_with?('http://') ? opts[:endpoint] : "http://#{opts[:endpoint]}"
+      @username = opts[:login]
       @password = Digest::MD5.hexdigest(opts[:password])
     end
 
@@ -28,9 +28,12 @@ module Gensee
     end
 
     def app_client
-      @client ||= Faraday.new(@uri) do |conn|
+      @client ||= Faraday.new(@endpoint) do |conn|
         conn.params = default_options
-        conn.headers = { content_type: 'application/json' }
+        conn.headers = {
+          content_type: 'application/json',
+          user_agent: Gensee::Configurable.user_agent
+        }
         conn.request :url_encoded
         # conn.response :logger
         conn.adapter Faraday.default_adapter

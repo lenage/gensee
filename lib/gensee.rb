@@ -7,7 +7,7 @@ module Gensee
     include Gensee::Configurable
 
     # @return [Gensee::Client] Gensee API Wrapper client
-    def client(options)
+    def client
       @client = Gensee::Client.new(options)
       @client
     end
