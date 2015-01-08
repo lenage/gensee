@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'faraday', '~> 0.9'
   spec.add_runtime_dependency 'oj', '~> 2.11'
-  spec.add_runtime_dependency 'activesupport', '~> 3.1'
+  spec.add_runtime_dependency 'activesupport', '~> 4.2'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
