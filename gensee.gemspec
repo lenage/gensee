@@ -13,6 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://git.llsapp.com/yuan/gensee/tree/master'
   spec.license       = 'MIT'
 
+  spec.required_ruby_version = '~> 1.9'
+
   spec.add_runtime_dependency 'faraday', '~> 0.9'
   spec.add_runtime_dependency 'oj', '~> 2.11'
   spec.add_runtime_dependency 'activesupport', '~> 3.1'
